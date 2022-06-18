@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\AssetController;
+use App\Http\Controllers\AssetCategoryController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\AssetCategoryFormFieldController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +32,9 @@ Route::controller(AuthenticationController::class)->group(function(){
 
 Route::middleware('auth:sanctum')->group( function () {
     Route::resource('status', StatusController::class);
+    Route::resource('asset', AssetController::class);
+    Route::resource('asset-category', AssetCategoryController::class);
+    Route::resource('asset-category-form-field', AssetCategoryFormFieldController::class);
+    Route::resource('location', LocationController::class);
+    Route::resource('site', SiteController::class);
 });
