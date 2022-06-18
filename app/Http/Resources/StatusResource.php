@@ -15,8 +15,14 @@ class StatusResource extends JsonResource
      * @param  Request  $request
      * @return array|Arrayable|JsonSerializable
      */
-    public function toArray($request): array|JsonSerializable|Arrayable
+    public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'created_at' => $this->created_at->format('Y-m-d'),
+            'updated_at' => $this->updated_at->format('Y-m-d'),
+        ];
     }
 }

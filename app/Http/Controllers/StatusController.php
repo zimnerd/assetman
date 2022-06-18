@@ -7,9 +7,9 @@ use App\Http\Requests\StoreStatusRequest;
 use App\Http\Requests\UpdateStatusRequest;
 use App\Http\Resources\StatusResource;
 use App\Models\Status;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class StatusController extends BaseController
@@ -17,11 +17,12 @@ class StatusController extends BaseController
     /**
      * Display a listing of the resource.
      *
-     * @return JsonResponse
+     * @return Response
      */
-    public function index(): JsonResponse
+    public function index()
     {
         $status = Status::all();
+        Log::info($status);
 
         return $this->sendResponse(StatusResource::collection($status), 'Status retrieved successfully.');
     }
@@ -29,9 +30,9 @@ class StatusController extends BaseController
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return JsonResponse
+     * @return Response
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request)
     {
         $input = $request->all();
 
@@ -45,7 +46,6 @@ class StatusController extends BaseController
         }
 
         $status = Status::create($input);
-
         return $this->sendResponse(new StatusResource($status), 'status created successfully.');
     }
 
@@ -53,9 +53,9 @@ class StatusController extends BaseController
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse
+     * @return Response
      */
-    public function show(int $id): JsonResponse
+    public function show(int $id): Response
     {
         $status = Status::find($id);
 
@@ -71,9 +71,9 @@ class StatusController extends BaseController
      *
      * @param Request $request
      * @param  int  $id
-     * @return JsonResponse
+     * @return Response
      */
-    public function update(Request $request, Status $status): JsonResponse
+    public function update(Request $request, Status $status): Response
     {
         $input = $request->all();
 
