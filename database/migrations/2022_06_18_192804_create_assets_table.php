@@ -15,20 +15,21 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->string('location');
-            $table->string('site');
-            $table->string('bardcode');
-            $table->string('serial-number');
+            $table->string('location')->nullable();
+            $table->string('site')->nullable();
+            $table->string('bardcode')->nullable();
+            $table->string('serial-number')->nullable();
             $table->string('name');
-            $table->string('description');
-            $table->string('comments');
-            $table->string('department');
-            $table->string('category');
-            $table->string('brand');
-            $table->string('model');
-            $table->string('cost');
-            $table->string('purchase-from');
-            $table->string('purchase-date');
+            $table->string('description')->nullable();
+            $table->string('comments')->nullable();
+            $table->string('department')->nullable();
+            $table->string('category')->nullable();
+            $table->string('brand')->nullable();
+            $table->string('model')->nullable();
+            $table->string('cost')->nullable();
+            $table->string('image');
+            $table->string('purchase-from')->nullable();
+            $table->string('purchase-date')->nullable();
             $table->timestamps();
         });
     }
