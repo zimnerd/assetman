@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('brand')->nullable();
             $table->string('model')->nullable();
             $table->string('cost')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('purchase-from')->nullable();
             $table->string('purchase-date')->nullable();
             $table->timestamps();

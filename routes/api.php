@@ -36,5 +36,4 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::resource('asset-category', AssetCategoryController::class);
     Route::resource('asset-category-form-field', AssetCategoryFormFieldController::class);
     Route::resource('location', LocationController::class);
-    Route::resource('site', SiteController::class);
 });
